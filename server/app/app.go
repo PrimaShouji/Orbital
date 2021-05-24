@@ -12,8 +12,13 @@ import (
 var Store *sessions.FilesystemStore
 
 type App struct {
-	router *gin.Engine
+	*AppPath
+	engine *gin.Engine
 	port   uint64
+}
+
+type AppPath struct {
+	router *gin.RouterGroup
 }
 
 func Init(port uint64) *App {
@@ -23,15 +28,24 @@ func Init(port uint64) *App {
 	r := gin.Default()
 
 	return &App{
-		router: r,
+		AppPath: &AppPath{
+			router: &r.RouterGroup,
+		},
+		engine: r,
 		port:   port,
 	}
 }
 
-func (a *App) Get(relativePath string, handler func(*gin.Context)) {
+func (a *AppPath) Get(relativePath string, handler func(*gin.Context)) {
 	a.router.GET(relativePath, handler)
 }
 
+func (a *AppPath) Group(relativePath string, handler func(*gin.Context)) *AppPath {
+	return &AppPath{
+		router: a.router.Group(relativePath, handler),
+	}
+}
+
 func (a *App) Run() {
-	a.router.Run(":" + fmt.Sprint(a.port))
+	a.engine.Run(":" + fmt.Sprint(a.port))
 }
