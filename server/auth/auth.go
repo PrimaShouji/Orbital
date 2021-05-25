@@ -26,7 +26,7 @@ func NewAuthenticator() (*Authenticator, error) {
 
 	conf := oauth2.Config{ // TODO: extract to config
 		ClientID:     "dwjT0bzwLM41mboU3VCZq6Hbb8uVSgsi",
-		ClientSecret: os.Getenv("PRIMA_ORBITAL_AUTH0"),
+		ClientSecret: os.Getenv("PRIMA_ORBITAL_AUTH0_SECRET"),
 		RedirectURL:  "http://localhost:7558/callback",
 		Endpoint:     provider.Endpoint(),
 		Scopes:       []string{oidc.ScopeOpenID, "profile"},
