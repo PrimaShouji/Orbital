@@ -1,6 +1,7 @@
 package isauth
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/PrimaShouji/Orbital/server/app"
@@ -18,6 +19,7 @@ func IsAuthenticated(c *gin.Context) {
 	}
 
 	if _, ok := session.Values["profile"]; !ok {
+		log.Println("Unauthorized request made; redirecting...")
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 	} else {
 		c.Next()
