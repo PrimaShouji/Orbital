@@ -2,8 +2,10 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { tap } from "rxjs/operators";
 
-@Injectable()
-export class OrbitalServer {
+@Injectable({
+	providedIn: "root",
+})
+export class OrbitalServerService {
 	private static readonly API_LOCATION = "http://localhost:7558";
 
 	constructor(private http: HttpClient) {}
@@ -15,6 +17,6 @@ export class OrbitalServer {
 	}
 
 	private path(relativePath: string): string {
-		return OrbitalServer.API_LOCATION + relativePath;
+		return OrbitalServerService.API_LOCATION + relativePath;
 	}
 }
