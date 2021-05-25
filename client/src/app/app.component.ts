@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { OrbitalServerService } from "./orbital/orbital-server.service";
 
 @Component({
@@ -6,10 +6,12 @@ import { OrbitalServerService } from "./orbital/orbital-server.service";
 	templateUrl: "./app.component.html",
 	styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	title = "client";
 
-	constructor(private orbital: OrbitalServerService) {
-		this.orbital.test();
+	constructor(private orbital: OrbitalServerService) {}
+
+	ngOnInit() {
+		this.orbital.test().subscribe();
 	}
 }
