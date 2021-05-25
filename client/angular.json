@@ -58,7 +58,8 @@
 							"vendorChunk": true,
 							"extractLicenses": false,
 							"sourceMap": true,
-							"namedChunks": true
+							"namedChunks": true,
+							"deployUrl": "/dashboard/"
 						}
 					},
 					"defaultConfiguration": "production"

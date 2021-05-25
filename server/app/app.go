@@ -36,6 +36,10 @@ func Init(port uint64) *App {
 	}
 }
 
+func (a *AppPath) Any(relativePath string, handler func(*gin.Context)) {
+	a.router.Any(relativePath, handler)
+}
+
 func (a *AppPath) Get(relativePath string, handler func(*gin.Context)) {
 	a.router.GET(relativePath, handler)
 }

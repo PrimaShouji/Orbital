@@ -2,6 +2,9 @@ package main
 
 import (
 	"flag"
+	"log"
+	"net/http/httputil"
+	"net/url"
 
 	"github.com/PrimaShouji/Orbital/server/app"
 	"github.com/PrimaShouji/Orbital/server/middleware/isauth"
@@ -10,6 +13,16 @@ import (
 	"github.com/PrimaShouji/Orbital/server/routes/logout"
 	"github.com/gin-gonic/gin"
 )
+
+func proxyHandler() gin.HandlerFunc {
+	r, err := url.Parse("http://localhost:4200")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	proxy := httputil.NewSingleHostReverseProxy(r)
+	return gin.WrapH(proxy)
+}
 
 func main() {
 	// Parse command-line args
@@ -26,5 +39,6 @@ func main() {
 	admin.Get("/test", func(c *gin.Context) {
 		c.String(200, "Authenticated")
 	})
+	a.Any("/dashboard/*proxyPath", proxyHandler())
 	a.Run()
 }
