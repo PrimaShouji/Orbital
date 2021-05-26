@@ -41,5 +41,5 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 
-	http.Redirect(w, r, authenticator.Config.AuthCodeURL(state), http.StatusTemporaryRedirect)
+	c.Redirect(http.StatusTemporaryRedirect, authenticator.Config.AuthCodeURL(state))
 }

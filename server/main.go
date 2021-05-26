@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"net/http"
 	"net/http/httputil"
 	"net/url"
 
@@ -32,13 +33,20 @@ func main() {
 
 	// Initialize application
 	a := app.Init(*port)
+
 	a.Get("/callback", callback.CallbackHandler)
 	a.Get("/login", login.LoginHandler)
 	a.Get("/logout", logout.LogoutHandler)
+
 	admin := a.Group("/admin", isauth.IsAuthenticated)
 	admin.Get("/test", func(c *gin.Context) {
 		c.String(200, "Authenticated")
 	})
+
 	a.Any("/dashboard/*proxyPath", proxyHandler())
+	a.Any("/", func(c *gin.Context) {
+		c.Redirect(http.StatusSeeOther, "/dashboard")
+	})
+
 	a.Run()
 }

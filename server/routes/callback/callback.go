@@ -72,5 +72,5 @@ func CallbackHandler(c *gin.Context) {
 	}
 
 	// Redirect to logged-in page
-	http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
+	c.Redirect(http.StatusSeeOther, "/dashboard")
 }

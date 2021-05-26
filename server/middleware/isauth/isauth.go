@@ -20,7 +20,7 @@ func IsAuthenticated(c *gin.Context) {
 
 	if _, ok := session.Values["profile"]; !ok {
 		log.Println("Unauthorized request made; redirecting...")
-		http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
+		c.Redirect(http.StatusSeeOther, "/dashboard")
 	} else {
 		c.Next()
 	}

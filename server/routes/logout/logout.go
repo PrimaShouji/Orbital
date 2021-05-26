@@ -39,5 +39,5 @@ func LogoutHandler(c *gin.Context) {
 	parameters.Add("client_id", "dwjT0bzwLM41mboU3VCZq6Hbb8uVSgsi") // TODO: extract to config
 	logoutUrl.RawQuery = parameters.Encode()
 
-	http.Redirect(w, r, logoutUrl.String(), http.StatusTemporaryRedirect)
+	c.Redirect(http.StatusTemporaryRedirect, logoutUrl.String())
 }
