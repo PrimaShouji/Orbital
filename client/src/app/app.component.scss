@@ -1,3 +1,5 @@
+@use "../mixins/glassmorphic" as *;
+
 .app-entry-outer {
 	display: table;
 	position: absolute;
@@ -20,12 +22,7 @@
 			width: 460px;
 			height: 600px;
 
-			border-radius: 10px;
-			background-color: rgba(255, 255, 255, 0.25);
-			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-			backdrop-filter: blur(4px);
-			-webkit-backdrop-filter: blur(4px);
-			border: 1px solid rgba(255, 255, 255, 0.18);
+			@include glassmorphic;
 
 			> .app-entry-card {
 				height: 540px;
@@ -47,10 +44,10 @@ $login-padding: 12px;
 	border-radius: 5px;
 	text-decoration: none;
 	color: black;
-	background: linear-gradient(rgb(199, 146, 211), rgb(130, 80, 139));
+	background: rgb(240, 246, 110);
 	transition-duration: 100ms;
 
 	&:hover {
-		background: linear-gradient(rgb(199, 146, 211), rgb(153, 107, 163));
+		background: rgb(255, 255, 0);
 	}
 }
