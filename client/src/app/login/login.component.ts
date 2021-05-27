@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { OrbitalServerService } from "../../services/orbital/orbital-server.service";
+import { OrbitalServerService } from "../orbital/orbital-server.service";
 
 @Component({
 	selector: "app-login",
