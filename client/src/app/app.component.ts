@@ -9,9 +9,13 @@ import { OrbitalServerService } from "./orbital/orbital-server.service";
 export class AppComponent implements OnInit {
 	title = "client";
 
+	authenticationStatus = "Not authenticated";
+
 	constructor(private orbital: OrbitalServerService) {}
 
 	ngOnInit() {
-		this.orbital.test().subscribe();
+		this.orbital.isAuthenticated().subscribe(() => {
+			this.authenticationStatus = "Authenticated";
+		});
 	}
 }
