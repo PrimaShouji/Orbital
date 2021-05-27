@@ -1,15 +1,12 @@
-import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { OrbitalServerService } from "./orbital/orbital-server.service";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
-	declarations: [AppComponent],
-	imports: [BrowserModule, HttpClientModule, AppRoutingModule],
-	providers: [OrbitalServerService],
+	declarations: [AppComponent, LoginComponent],
+	imports: [AppRoutingModule],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
