@@ -9,6 +9,7 @@ import (
 
 	"github.com/PrimaShouji/Orbital/server/app"
 	"github.com/PrimaShouji/Orbital/server/middleware/isauth"
+	"github.com/PrimaShouji/Orbital/server/routes/authenticated"
 	"github.com/PrimaShouji/Orbital/server/routes/callback"
 	"github.com/PrimaShouji/Orbital/server/routes/login"
 	"github.com/PrimaShouji/Orbital/server/routes/logout"
@@ -37,6 +38,7 @@ func main() {
 	a.Get("/callback", callback.CallbackHandler)
 	a.Get("/login", login.LoginHandler)
 	a.Get("/logout", logout.LogoutHandler)
+	a.Get("/authenticated", authenticated.AuthenticatedHandler)
 
 	admin := a.Group("/admin", isauth.IsAuthenticated)
 	admin.Get("/test", func(c *gin.Context) {
