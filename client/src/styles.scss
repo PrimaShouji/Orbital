@@ -4,3 +4,13 @@
 * {
 	font-family: "Oxygen", sans-serif;
 }
+
+a {
+	text-decoration: none;
+	transition-duration: 100ms;
+	color: rgb(65, 28, 126);
+
+	&:hover {
+		color: rgb(69, 52, 221);
+	}
+}

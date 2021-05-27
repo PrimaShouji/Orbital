@@ -1,0 +1,43 @@
+@use "/src/mixins/glassmorphic" as *;
+
+.app-entry-outer {
+	display: table;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+
+	background-image: url("/dashboard/assets/images/shot-stash-pastel-geometric-shape-two-tone.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	> .app-entry-middle {
+		display: table-cell;
+		vertical-align: middle;
+
+		> .app-entry-inner {
+			margin: auto;
+			padding: 20px;
+			width: 600px;
+			height: 460px;
+
+			@include glassmorphic;
+
+			> .app-entry-card {
+				height: 540px;
+				text-align: center;
+				padding: 30px;
+
+				* {
+					margin-top: 30px;
+				}
+
+				h1 {
+					margin-top: 150px;
+					margin-bottom: 100px;
+				}
+			}
+		}
+	}
+}
