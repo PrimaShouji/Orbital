@@ -1,10 +1,28 @@
 @use "/src/mixins/glassmorphic.scss" as *;
 
-.main {
-	margin-top: 20px;
-	margin-left: 20px;
-	padding: 5px;
-	width: 400px;
+.outer {
+	display: flex;
+	margin: 20px;
+	height: 96%;
 
-	@include glassmorphic;
+	.nav {
+		@include glassmorphic;
+
+		width: 30%;
+		padding: 5px;
+
+		ul > li {
+			margin-top: 10px;
+			list-style: none;
+		}
+	}
+
+	.main {
+		@include glassmorphic;
+
+		flex: 1;
+
+		margin-left: 20px;
+		padding: 5px;
+	}
 }
