@@ -1,6 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { tap } from "rxjs/operators";
 
 @Injectable({
 	providedIn: "root",
@@ -8,11 +7,7 @@ import { tap } from "rxjs/operators";
 export class OrbitalServerService {
 	private static readonly API_LOCATION = "http://localhost:7558";
 
-	private authenticated: boolean;
-
-	constructor(private http: HttpClient) {
-		this.authenticated = false;
-	}
+	constructor(private http: HttpClient) {}
 
 	isAuthenticated() {
 		return this.http.get<AuthenticationState>(this.path("/authenticated"));

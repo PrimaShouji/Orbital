@@ -1,0 +1,10 @@
+@use "/src/mixins/glassmorphic.scss" as *;
+
+.main {
+	margin-top: 20px;
+	margin-left: 20px;
+	padding: 5px;
+	width: 400px;
+
+	@include glassmorphic;
+}
