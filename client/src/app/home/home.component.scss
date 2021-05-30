@@ -5,7 +5,7 @@
 	margin: 20px;
 	height: 96%;
 
-	.nav {
+	nav {
 		@include glassmorphic;
 
 		width: 30%;
@@ -17,7 +17,7 @@
 		}
 	}
 
-	.main {
+	main {
 		@include glassmorphic;
 
 		flex: 1;
